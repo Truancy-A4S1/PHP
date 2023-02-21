@@ -1,11 +1,13 @@
 <?php
-
+// Parent class Students
 class Students{
+	// Parent class properties
 	public $firstname;
 	public $lastname;
 	public $course;
 	public $year;
 
+	//Parent class constructor and methods
 	public function __construct($firstname, $lastname, $course, $year)
 	{
 		$this->firstname = $firstname;
@@ -37,13 +39,18 @@ echo "<hr>Student Object: ";
 echo $jam->print_fullname();
 echo $jam->print_profile();
 
-
+// CS Students inherits properties from Students
 Class ComSci_Students extends Students{
+	//CS Students properties
 	public $favorite_language;
 
+	//CS Students constructor and methods
 	public function __construct($firstname, $lastname, $course, $year, $favorite_language){
+		//Notice that $firstname, $lastname, $course, $year is parent's properties
+		//Since parent class has its own constructor, so we can call it to initialize the properties of its child class
 		parent::__construct($firstname, $lastname, $course, $year);
 
+		//Then set the properties of the child class
 		$this->favorite_language = $favorite_language;
 	}
 
@@ -58,6 +65,7 @@ $art = new ComSci_Students("Art","thur","BSCS","II", "SQL");
 $tat = new ComSci_Students("Tat","ten","BSCS","II", "Python");
 
 echo "<hr>ComSci Student Object: ";
+//Notice that we can use print_fullname and print_profile methods from Students class even if they are not defined inside ComSci_ Students class...
 echo $art->print_fullname();
 echo $art->print_profile();
 echo $art->show_language();
@@ -69,7 +77,7 @@ echo $tat->print_profile();
 echo $tat->show_language();
 
 
-
+// PE Students inherits properties from Students
 class PE_Students extends Students{
 	public $favorite_activity;
 
@@ -86,8 +94,8 @@ class PE_Students extends Students{
 
 }
 
-$pat = new PE_Students("Pat","trick","PESR","III","Basketball");
-$job = new PE_Students("Job","ba","PESR","II","H");
+$pat = new PE_Students("Pat","trick","UPESR","III","Basketball");
+$job = new PE_Students("Job","ba","UPESR","II","H");
 
 echo "<hr>PE Student Object: ";
 echo $pat->print_fullname();
